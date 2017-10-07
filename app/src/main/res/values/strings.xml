@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ParkingApp</string>
+    <string name = "RegisterActivity">Register</string>
 </resources>

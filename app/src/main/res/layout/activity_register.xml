@@ -7,16 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_marginBottom="100dp"
-    tools:context="com.example.android.parkingapp.MainActivity">
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="40dp"
-        android:textSize="30sp"
-        android:text = "ParkingHere"/>
+    tools:context="com.example.android.parkingapp.RegisterActivity">
 
     <LinearLayout
         android:layout_width="300dp"
@@ -29,18 +20,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Email :" />
+            android:text="Email: "/>
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/registerUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="textEmailAddress"
-            android:hint="   Enter your email address" />
+            android:hint=" " />
 
     </LinearLayout>
 
@@ -55,18 +43,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Password :" />
+            android:text="Password: "/>
 
         <EditText
-            android:id="@+id/userPassword"
+            android:id="@+id/registerUserPassword1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="textPassword"
-            android:hint="   Enter your password" />
+            android:hint=" " />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password: "/>
+
+        <EditText
+            android:id="@+id/registerUserPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="textPassword"
+            android:hint=" " />
 
     </LinearLayout>
 
@@ -80,18 +88,11 @@
         android:layout_marginTop="10dp">
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/registerToDatabaseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Login" />
-
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Register" />
-
     </LinearLayout>
 
 </LinearLayout>
