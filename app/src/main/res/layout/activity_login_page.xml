@@ -1,14 +1,12 @@
-?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="100dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.michellerichardson.parkhere.LoginActivity">
+    tools:context="com.example.android.parkhere.LoginPage">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,6 +24,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +32,6 @@
             android:text="Email"
             android:textSize="16sp"
             android:textStyle="bold" />
-
 
         <EditText
             android:id="@+id/userName"
@@ -43,9 +41,7 @@
             android:inputType="textEmailAddress"
             android:maxLines="1" />
 
-
     </LinearLayout>
-
 
     <LinearLayout
 
@@ -55,7 +51,6 @@
         android:layout_marginRight="50dp"
         android:gravity="center"
         android:orientation="horizontal">
-
 
         <TextView
 
@@ -75,9 +70,7 @@
             android:inputType="textPassword"
             android:maxLines="1" />
 
-
     </LinearLayout>
-
 
     <LinearLayout
 
@@ -103,8 +96,6 @@
             android:layout_height="wrap_content"
             android:text="Register" />
 
-
     </LinearLayout>
-
 
 </LinearLayout>

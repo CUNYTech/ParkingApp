@@ -1,4 +1,4 @@
-package com.example.android.parkingapp;
+package com.example.android.parkhere;
 
 import org.junit.Test;
 

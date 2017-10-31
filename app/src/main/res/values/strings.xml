@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">ParkingApp</string>
+    <string name="app_name">ParkHere</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short"></string>
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_field_required">Field is required</string>
+    <string name="error_invalid_email">Email is invalid</string>
+    <string name="error_incorrect_password">The password is incorrect</string>
+    <string name="action_settings">Settings</string>
 </resources>

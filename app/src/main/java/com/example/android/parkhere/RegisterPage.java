@@ -1,10 +1,11 @@
-package com.example.michellerichardson.parkhere;
+package com.example.android.parkhere;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -26,7 +27,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class RegisterActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class RegisterPage extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
 
     EditText userName;
@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+                                requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
                         }
                     });
         } else {
@@ -249,7 +249,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(RegisterActivity.this,
+                new ArrayAdapter<>(RegisterPage.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -269,7 +269,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_page);
 
         userName = (EditText) findViewById(R.id.email);
         userPassword = (EditText) findViewById(R.id.userPassword);
@@ -278,7 +278,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         register_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "please wait", Toast.LENGTH_SHORT).show();
+                Intent registerIntent = new Intent(RegisterPage.this, ParkHereMap.class);
+                RegisterPage.this.startActivity(registerIntent);
             }
         });
 
@@ -359,4 +360,3 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         }
     }
 }
-
