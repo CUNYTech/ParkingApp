@@ -278,7 +278,7 @@ public class RegisterPage extends AppCompatActivity implements LoaderCallbacks<C
         register_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(RegisterPage.this, ParkHereMap.class);
+                Intent registerIntent = new Intent(RegisterPage.this, MapSearchPage.class);
                 RegisterPage.this.startActivity(registerIntent);
             }
         });
