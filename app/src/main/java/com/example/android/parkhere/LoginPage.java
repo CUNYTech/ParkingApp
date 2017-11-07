@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginPage extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     EditText etuserName;
     EditText etuserPassword;
     Button register_button;
@@ -31,5 +35,7 @@ public class LoginPage extends AppCompatActivity {
                 LoginPage.this.startActivity(registerIntent);
             }
         });
+
     }
+
 }

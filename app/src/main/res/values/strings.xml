@@ -10,4 +10,12 @@
     <string name="error_invalid_email">Email is invalid</string>
     <string name="error_incorrect_password">The password is incorrect</string>
     <string name="action_settings">Settings</string>
+    <string name="zoom_buttons">Zoom Buttons</string>
+    <string name="compass">Compass</string>
+    <string name="mylocation_button">My Location Button</string>
+    <string name="map_not_ready">Map is not ready yet</string>
+    <string name="location_permission_denied"></string>
+    <string name="permission_required_toast"></string>
+    <string name="mylocation_layer"></string>
+
 </resources>
