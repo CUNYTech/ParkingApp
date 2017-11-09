@@ -40,7 +40,7 @@
         <activity android:name=".ParkHereStreet" />
         <activity android:name=".ParkHereMapSearch" />
         <activity android:name=".ParkHereMap" />
-        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".SplashScreen" />
     </application>
 
 </manifest>

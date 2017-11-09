@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -27,19 +29,26 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
+import java.util.List;
 
 public class MapSearchPage extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    private static final String TAG = "MapSearchPage";
 
     public GoogleMap mMap;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
     Location mLastLocation;
     Marker mCurrentLocationMarker;
+    public static final int RC_SIGN_IN = 1;
     boolean mapReady=false;
     private UiSettings mUiSettings;
     private CheckBox mMyLocationButtonCheckbox;
@@ -47,6 +56,12 @@ public class MapSearchPage extends AppCompatActivity implements OnMapReadyCallba
     private boolean mLocationPermissionDenied = false;
     private CheckBox mMyLocationLayerCheckbox;
     private static final int LOCATION_LAYER_PERMISSION_REQUEST_CODE = 2;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private String mUsername;
+
+    private FirebaseDatabase mFirebaseDatabase;
+
 
 
     @Override
@@ -54,12 +69,38 @@ public class MapSearchPage extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_search_page);
 
+        // Initialize Firebase components
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
         mMyLocationButtonCheckbox = (CheckBox) findViewById(R.id.mylocationbutton_toggle);
         mMyLocationLayerCheckbox = (CheckBox) findViewById(R.id.mylocationlayer_toggle);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user !=null) {
+                    // user is signed in
+                    Toast.makeText(MapSearchPage.this, "You're now signed in. Welcome to FriendlyChat.", Toast.LENGTH_SHORT).show();
+                } else {
+                    //user is signed out
+                    List<AuthUI.IdpConfig> providers = Arrays.asList(
+                            new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                            new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
+                    );
 
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setIsSmartLockEnabled(false)
+                                    .setAvailableProviders(providers)
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }
+        };
     }
 
     /**
@@ -321,5 +362,15 @@ public class MapSearchPage extends AppCompatActivity implements OnMapReadyCallba
             // other 'case' lines to check for other permissions this app might request.
             //You can add here other case statements according to your requirement.
         }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+    }
+    @Override
+    protected void onResume () {
+        super.onResume();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 }
