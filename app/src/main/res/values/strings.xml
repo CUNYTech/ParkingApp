@@ -17,5 +17,9 @@
     <string name="location_permission_denied"></string>
     <string name="permission_required_toast"></string>
     <string name="mylocation_layer"></string>
-
+    <string name="disconnect"></string>
+    <string name="sign_out"></string>
+    <string name="signed_out"></string>
+    <string name="minimum_password"></string>
+    <string name="auth_failed"></string>
 </resources>
