@@ -45,10 +45,64 @@
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.MapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.android.parkhere.MapSearchPage" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="175dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/zoom_buttons_toggle"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="setZoomButtonsEnabled"
+                    android:text="@string/zoom_buttons"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/compass_toggle"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="setCompassEnabled"
+                    android:text="@string/compass"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mylocationbutton_toggle"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:onClick="setMyLocationButtonEnabled"
+                    android:text="@string/mylocation_button"/>
+                <CheckBox
+                    android:id="@+id/mylocationlayer_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:onClick="setMyLocationLayerEnabled"
+                    android:text="@string/mylocation_layer"/>
+
+            </LinearLayout>
+
+        </ScrollView>
 
      </LinearLayout>
 
